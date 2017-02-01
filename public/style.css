@@ -1,0 +1,39 @@
+body {
+	background-color: #000;
+}
+
+div {
+	width: 1000px;
+	margin: 5% auto;
+	color: #FFF;	
+}
+
+h2 {
+	text-align: center;
+}
+
+canvas {
+	width: 1000px;
+	height: 150px;
+    border: 1px solid #FFF;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	margin-top: 5px;
+}
+
+.zyje {
+	color: green;
+}
+
+.nie-zyje {
+	color: red;
+}
+
+.dane {
+	font-style: italic;
+}

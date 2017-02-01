@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Opiekun osób starszych</title>
+		<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="paper/dist/paper-full.min.js"></script>
+		<script type="text/paperscript" src="paperscript.js" canvas="diagram"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<div class="info">
+			<h2>Dane z czujników</h2>
+			<ul>
+				<li>Puls: <span class="dane">84</dane></li>
+				<li>Oddech: <span class="dane">Oddycha</span></li>
+				<li>Stan: <span class="dane nie-zyje">Umarł</span></li>
+			</ul>
+		</div>
+
+		<div class="diagram-box">
+			<h2>Wykres EKG</h2>
+			<canvas id="diagram"></canvas>
+		</div>
+	</body>
+</html>
