@@ -1,39 +1,53 @@
 body {
 	background-color: #000;
+	color: #FFF;	
 }
 
-div {
+h1 {
+	text-align: center;
+	margin-top: 80px;
+}
+.content {
+	width: 1280px;
+	height: 600px;
+	margin: 0 auto;
+}
+
+.status {
+	width: 270px;
+	float: left;
+}
+
+.diagram-box {
 	width: 1000px;
-	margin: 5% auto;
-	color: #FFF;	
+	float: right;
 }
 
 h2 {
 	text-align: center;
+	margin-top: 60px;
 }
 
 canvas {
 	width: 1000px;
 	height: 150px;
-    border: 1px solid #FFF;
+	border: 1px solid #FFF;
 }
 
 ul {
 	list-style: none;
+	margin-top: 50px;
 }
 
 li {
-	margin-top: 5px;
+	margin-top: 25px;
 }
 
-.zyje {
+.alive {
 	color: green;
 }
 
-.nie-zyje {
+.dead {
 	color: red;
 }
 
-.dane {
-	font-style: italic;
-}

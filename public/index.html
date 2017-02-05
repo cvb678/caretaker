@@ -3,23 +3,33 @@
 	<head>
 		<title>Opiekun osób starszych</title>
 		<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="handlerAPI.js"></script>
+		<script type="text/javascript" src="checkStatus.js"></script>
 		<script type="text/javascript" src="paper/dist/paper-full.min.js"></script>
-		<script type="text/paperscript" src="diagram.js" canvas="diagram"></script>
+		<script type="text/paperscript" src="diagramECG.js" canvas="ECG"></script>
+		<script type="text/paperscript" src="diagramCO.js" canvas="CO"></script>
+	
     <link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<body>
-		<div class="info">
-			<h2>Dane z czujników</h2>
-			<ul>
-				<li>Puls: <span class="dane">84</dane></li>
-				<li>Oddech: <span class="dane">Oddycha</span></li>
-				<li>Stan: <span class="dane nie-zyje">Umarł</span></li>
-			</ul>
-		</div>
+		<h1>Opiekun osób starszych</h1>
+		<div class="content">
+			<div class="status">
+				<h2>Status:</h2>
+				<ul>
+					<li>Puls: <span id="pulse">84</dane></li>
+					<li>Oddech: <span id="breath">Oddycha</span></li>
+					<li>Stan: <span id="state">Umarł</span></li>
+				</ul>
+			</div>
 
-		<div class="diagram-box">
-			<h2>Wykres EKG</h2>
-			<canvas id="diagram"></canvas>
+			<div class="diagram-box">
+				<h2>Wykres EKG</h2>
+				<canvas id="ECG"></canvas>
+			
+				<h2>Wykres CO w oddechu</h2>
+				<canvas id="CO"></canvas>
+			</div>
 		</div>
 	</body>
 </html>
