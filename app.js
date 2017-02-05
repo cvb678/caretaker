@@ -14,7 +14,7 @@ var url = 'mongodb://localhost:27017/grupowy';
 var findDocuments =  function(db, callback) {
 	var collection = db.collection('Data');
   
-	collection.find({},{sort: {time: -1}, limit: 500}).toArray(function(err, docs) {
+	collection.find({},{sort: {time: -1}, limit: 200}).toArray(function(err, docs) {
     	assert.equal(err, null);
     	callback(docs);
   	});
