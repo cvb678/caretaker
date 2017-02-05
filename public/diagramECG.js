@@ -35,7 +35,10 @@ function onFrame(event) {
 
 	if(frames%60 === 0) {
 		API.setLastDrawn(
-			path.segments.slice(Math.max(path.segments.length - 20, 1)));
+			path.segments.slice(
+				Math.max(path.segments.length - 20, 1)
+			)
+		);
 		frames = 0;
 	};
 
