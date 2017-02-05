@@ -2,6 +2,7 @@ var handleAPI = function() {
 
 	var dataToDraw = [];
 	var dataObjects = [];
+	var lastDrawn = [];
 
 	//ajax query for diagram data
 	var executeQuery = function() {
@@ -84,14 +85,32 @@ var handleAPI = function() {
 		return value;
 	};
 
-	var getLastObjects = function() {
-		return dataObjects.slice(Math.max(dataObjects.length - 20, 1))
-	}
+	var getPulse = function() {
+		var len = dataObjects.length-1;
+		var value = 0;
+		
+		console.log(len);
+		if(len > 0) {
+			value = dataObjects[len].pulse;
+		}
+
+		return value;
+	};
+
+	var getLastDrawn = function() {
+		return lastDrawn;
+	};
+
+	var setLastDrawn = function(path) {
+		lastDrawn = path.slice();
+	};
 
 	return {
 		executeQuery: executeQuery,
 		getDataToDraw: getDataToDraw,
-		getLastObjects: getLastObjects
+		getPulse: getPulse,
+		getLastDrawn: getLastDrawn,
+		setLastDrawn: setLastDrawn
 	};
 };
 

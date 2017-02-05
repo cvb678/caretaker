@@ -1,20 +1,19 @@
 var checkStatus = function () {
 	
-	console.log("CHECKING STATUS");
-	var lastItems = API.getLastObjects();
+	var lastSegments = API.getLastDrawn();
 	var breath = false;
 	var ecg = false;
-	var pulse = 0;
-	
+	var pulse = 0;	
+
 	var pulseBox = $("#pulse");
 	var stateBox = $("#state");
 	var breathBox = $("#breath");
 
-	lastItems.forEach(function(item) {
-		if(item.value != 100) {
+	lastSegments.forEach(function(segment) {
+		if(segment.point.y != 100) {
 			ecg = true;
 		}
-		if(item.value2 != 100) {
+		if(segment.point.y != 100) {
 			breath = true;
 		}
 	});
@@ -32,30 +31,25 @@ var checkStatus = function () {
 	}
 
 	//CHECKING PULSE
-	var len = lastItems.length-1;
-
-	if(lastItems[len]) {
-		pulse = lastItems[len].pulse
-	}
-
-	pulseBox.text(pulse);
-
+	pulse = API.getPulse();
 
 	// CHECKING STATE
 	if(!ecg && !breath) {
-		console.log(stateBox);
 		stateBox.removeClass("alive");
 		stateBox.addClass("dead");
-		stateBox.text("Nie żyje!");
+		stateBox.text("Nie żyje");
+		pulse = 0;
 	}
 	
 	if(ecg && breath) {
 		stateBox.removeClass("dead");
 		stateBox.addClass("alive");
-		stateBox.text("Żyje!");
+		stateBox.text("Żyje");
 	}
+	
+	pulseBox.text(pulse);
 
-	setTimeout(checkStatus, 5000);
+	setTimeout(checkStatus, 3000);
 }
 
 $(document).ready(function() {
