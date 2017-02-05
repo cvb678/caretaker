@@ -2,7 +2,6 @@ var CANVAS_WIDTH = 998;
 var X_STEP = 2;
 
 var positionX = 0;
-var frames = 0;
 
 //create new path, points will be added to form a diagram
 var path = new Path();
@@ -33,15 +32,12 @@ function onFrame(event) {
 		path.add(CANVAS_WIDTH, value);
 	}
 
-	if(frames%60 === 0) {
+	if(event.count%60 === 0) {
 		API.setLastDrawn(
 			path.segments.slice(
 				Math.max(path.segments.length - 20, 1)
 			)
 		);
-		frames = 0;
 	};
-
-	frames += 1;
 };
 

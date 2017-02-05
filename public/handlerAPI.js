@@ -89,7 +89,6 @@ var handleAPI = function() {
 		var len = dataObjects.length-1;
 		var value = 0;
 		
-		console.log(len);
 		if(len > 0) {
 			value = dataObjects[len].pulse;
 		}
