@@ -12,6 +12,7 @@ var checkStatus = function () {
 	lastSegments.forEach(function(segment) {
 		if(segment.point.y != 100) {
 			ecg = true;
+			breath = true;
 		}
 		/* only one segment for now
 		if(segment2.point.y != 100) {
