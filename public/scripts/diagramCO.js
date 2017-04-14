@@ -24,9 +24,10 @@ function onFrame(event) {
 
 	if(positionX < CANVAS_WIDTH) {
 			path.add(positionX, value);
-			positionX += X_STEP;		
+			positionX += X_STEP;
 	}
 	else {
+		//shift left
 		path.removeSegments(0, 1);
 		path.position -= new Point(X_STEP, 0);
 		path.add(CANVAS_WIDTH, value);

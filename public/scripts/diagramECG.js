@@ -23,10 +23,11 @@ path.onMouseLeave = function (event) {
 function onFrame(event) {
 	var value = API.getDataToDraw("ECG");
 	if(positionX < CANVAS_WIDTH) {
-			path.add(positionX, value);
-			positionX += X_STEP;		
+		path.add(positionX, value);
+		positionX += X_STEP;
 	}
 	else {
+		//shift left
 		path.removeSegments(0, 1);
 		path.position -= new Point(X_STEP, 0);
 		path.add(CANVAS_WIDTH, value);
@@ -40,4 +41,3 @@ function onFrame(event) {
 		);
 	};
 };
-

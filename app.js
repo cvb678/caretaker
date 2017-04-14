@@ -14,62 +14,61 @@ var url = 'mongodb://localhost:27017/grupowy';
 //find newest 200 objects
 var findDocuments =  function(db, callback) {
 	var collection = db.collection('Data');
-  
-	collection.find({}, 
-			{sort: {time: -1}, limit: 200})
-			.toArray(function(err, docs) {
-				assert.equal(err, null);
-	    		callback(docs);
-			});
+
+	collection.find({}, {sort: {time: -1}, limit: 200})
+						.toArray(function(err, docs) {
+							assert.equal(err, null);
+							callback(docs);
+						});
 };
 
 app.get('/', function (req, res) {
 	console.log("Page requested");
 	res.sendFile(path.resolve("__dirname + '/public/index.html"));
-})
+});
 
 app.get('/get', function (req, res) {
 	MongoClient.connect(url, function(err, db) {
 		assert.equal(null, err);
-		findDocuments(db, function(docs) {           
-   		    res.end(JSON.stringify(docs));
+		findDocuments(db, function(docs) {
+			res.end(JSON.stringify(docs));
 			db.close();
 		});
-  	});
+	});
 })
 
 app.get('/deleteAll', function (req, res) {
 	MongoClient.connect(url, function(err, db) {
 		assert.equal(null, err);
-    
-		var collection = db.collection('Data');
-	    collection.remove({}, {safe: true}, function(err, result) {
-      		if(err) {
-        		console.log(err);
-				throw err;
-      		}
-		});
-  	});
 
-  res.end("Deleted all records");
+		var collection = db.collection('Data');
+		collection.remove({}, {safe: true}, function(err, result) {
+			if(err) {
+				console.log(err);
+				throw err;
+			}
+		});
+	});
+
+	res.end("Deleted all records");
 })
 
 app.post('/add', function (req, res) {
 	MongoClient.connect(url, function(err, db) {
-    	assert.equal(null, err);
-    	console.log("Connected successfully to db");
+		assert.equal(null, err);
+		console.log("Connected successfully to db");
 
-	    var col = db.collection('Data');
-    	col.insert(req.body, function(err, r) {
-    	    assert.equal(null, err);
-    		res.end('Added');
-    		db.close();
+		var col = db.collection('Data');
+		col.insert(req.body, function(err, r) {
+			assert.equal(null, err);
+			res.end('Added');
+			db.close();
 		});
 	});
 })
 
 var server = app.listen(8081, function () {
-	var host = server.address().address
-	var port = server.address().port
-	console.log("Server listening at http://%s:%s", host, port)
+var host = server.address().address
+var port = server.address().port
+console.log("Server listening at http://%s:%s", host, port)
 });

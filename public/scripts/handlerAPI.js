@@ -9,7 +9,7 @@ var handleAPI = function() {
 		$.ajax({
 			url: "http://localhost:8081/get",
 			success: function(data) {
-				onData(data);			
+				onData(data);
 			},
 			error: function(reason) {
 				onError(reason);
@@ -24,16 +24,16 @@ var handleAPI = function() {
 		var tempDataObjects = eval(data);
 		tempDataObjects.reverse();
 		var lastPointIndex = checkNewData(tempDataObjects);
-	
+
 		//is there any new data
-		if(lastPointIndex == 0) {
+		if(lastPointIndex === 0) {
 			dataObjects = tempDataObjects.slice();
 			dataToDraw = tempDataObjects;
 		}
 		else {
 			pushDataToQue(lastPointIndex, tempDataObjects);
 		}
-	
+
 		tempDataObjects = [];
 	};
 
@@ -49,7 +49,7 @@ var handleAPI = function() {
 		if(len > 0) {
 			while(tempDataObjects[index].time != dataObjects[len].time) {
 				index += 1;
-			};	
+			};
 		}
 
 		return index;
@@ -66,18 +66,18 @@ var handleAPI = function() {
 
 		dataObjects=tempDataObjects.slice();
 	};
-	
+
 	//getter for current object
 	var getDataToDraw = function(type) {
-				
+
 		var objToDraw = dataToDraw.shift();
 		var value = 100;
 
 		if(objToDraw) {
-			if(type == "ECG") {
+			if(type === "ECG") {
 				value = objToDraw.value;
 			}
-			if(type == "CO") {
+			if(type === "CO") {
 				value = objToDraw.value2;
 			}
 		}
@@ -88,7 +88,7 @@ var handleAPI = function() {
 	var getPulse = function() {
 		var len = dataObjects.length-1;
 		var value = 0;
-		
+
 		if(len > 0) {
 			value = dataObjects[len].pulse;
 		}
@@ -118,5 +118,5 @@ var API = handleAPI();
 
 // run first time query
 $(document).ready(function() {
-  API.executeQuery();
+	API.executeQuery();
 });
